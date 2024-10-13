@@ -6,34 +6,39 @@ import com.google.android.material.snackbar.Snackbar
 
 object ToastUtil {
     fun errorSnackBar(message: String, view: View?, callback: ((Boolean) -> Unit)?) {
-        Snackbar.make(view!!, message, Snackbar.LENGTH_SHORT).let {
-            it.view.setBackgroundColor(Color.parseColor("#dd5a5a"))
-            it.addCallback(object : Snackbar.Callback() {
-                override fun onShown(sb: Snackbar?) {
+        view?.let {
+            Snackbar.make(it, message, Snackbar.LENGTH_SHORT).let {
+                it.view.setBackgroundColor(Color.parseColor("#dd5a5a"))
+                it.addCallback(object : Snackbar.Callback() {
+                    override fun onShown(sb: Snackbar?) {
 
-                }
+                    }
 
-                override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-                    callback?.invoke(true)
-                }
-            })
-            it.show()
+                    override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                        callback?.invoke(true)
+                    }
+                })
+                it.show()
+            }
         }
+
     }
 
     fun successSnackBar(message: String, view: View?, callback: ((Boolean) -> Unit)?) {
-        Snackbar.make(view!!, message, Snackbar.LENGTH_SHORT).let {
-            it.view.setBackgroundColor(Color.parseColor("#87cc6c"))
-            it.addCallback(object : Snackbar.Callback() {
-                override fun onShown(sb: Snackbar?) {
+        view?.let {
+            Snackbar.make(it, message, Snackbar.LENGTH_SHORT).let {
+                it.view.setBackgroundColor(Color.parseColor("#87cc6c"))
+                it.addCallback(object : Snackbar.Callback() {
+                    override fun onShown(sb: Snackbar?) {
 
-                }
+                    }
 
-                override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-                    callback?.invoke(true)
-                }
-            })
-            it.show()
+                    override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                        callback?.invoke(true)
+                    }
+                })
+                it.show()
+            }
         }
     }
 }
